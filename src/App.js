@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 // import { Input, Button, Card, message } from "antd"; // Assuming you're using Ant Design
 // import 'antd/dist/reset.css';
 // import "./App.css";
@@ -9,20 +8,6 @@
 //   const [products, setProducts] = useState([]);
 //   const [cart, setCart] = useState([]);
 //   const [searchQuery, setSearchQuery] = useState("");
-
-//   // Fetch products from the dummy API
-//   useEffect(() => {
-//     fetch('https://dummyjson.com/products')
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (Array.isArray(data)) {
-//           setProducts(data);
-//         } else {
-//           console.error("Products data is not an array:", data);
-//         }
-//       })
-//       .catch((error) => console.error("Error fetching products:", error));
-//   }, []);
 
 //   // Add item to cart
 //   const addToCart = (product) => {
@@ -80,58 +65,61 @@
 //   );
 // }
 
-// export default App;
-
 import { React, useEffect, useState } from "react";
-    function BuyItem() {
-      const [curState, setCurState] = useState([]);
+import "./App.css";
+import BuyButton from "./buyButton.js";
+import ItemDisplay from "./itemDisplay.js";
 
-      useEffect(() => {
-        async function fetchData() {
-          try {
-            const response = await fetch("https://dummyjson.com/products");
-            const data = await response.json();
-            setCurState(data);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
+function Main() {
+  const [curState, setCurState] = useState();
+  const [cart, setCart] = useState();
+  // const [products, setProducts] = useState([]);
+  console.log("hi");
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch("//dummyjson.com/test");
+  //       const data = await response.json();
+  //       setCurState(data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
+
+  async function PopulateData() {
+    // fetch('https://dummyjson.com/products').then((response) => response.json()).then((data) => {
+    //         if (Array.isArray(data)) {
+    //           setProducts(data);
+    //         } else {
+    //           console.error("Products data is not an array:", data);
+    //         }
+    //       })
+    //       .catch((error) => console.error("Error fetching products:", error));
+      const response = await fetch('https://dummyjson.com/products');
+      const data = await response.json();
+      setCurState(data);
+  }
+  
+  useEffect(() => {
+    PopulateData();
+  }, []);
+
+  // console.log(curState.products[0]);
+  console.log("bye");
+
+  return (
+    <div>
+      <div>
+        {!curState 
+        ? <p> loading </p>
+        : curState.products.map((product) => <ItemDisplay product={product} cart={cart} setCart={setCart} />)
         }
-        fetchData();
-      }, []);
+      </div>
+    </div>
+  );
+}
 
-      // async function PopulateData() {
-      //     const response = await fetch('//dummyjson.com/test').then(res => res.json()).then(console.log);
-      //     const data = await response.json();
-      //     setCurState({ curState: data });
-      // }
-      
-      // useEffect(() => {
-      //   PopulateData();
-      // }, []);
-
-      function BuyButton() {
-        const [count, setCount] = useState(0);
-      
-        function handleClick() {
-          setCount(count + 1);
-        }
-      
-        return (
-          <button onClick={handleClick}>
-            Added to cart {count} times
-          </button>
-        );
-      }
-
-      return (
-        <div>
-          <BuyButton />
-          <BuyButton />
-          {curState.map((item, index) => (
-          <div key={index}>{item}</div>
-          ))}
-        </div>
-      );
-    }
-
-export default BuyItem;
+export default Main;
