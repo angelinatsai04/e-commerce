@@ -10,14 +10,6 @@ function Main() {
   console.log("hi");
 
   async function PopulateData() {
-    // fetch('https://dummyjson.com/products').then((response) => response.json()).then((data) => {
-    //         if (Array.isArray(data)) {
-    //           setProducts(data);
-    //         } else {
-    //           console.error("Products data is not an array:", data);
-    //         }
-    //       })
-    //       .catch((error) => console.error("Error fetching products:", error));
       const response = await fetch('https://dummyjson.com/products');
       const data = await response.json();
       setCurState(data);
@@ -27,6 +19,7 @@ function Main() {
     PopulateData();
   }, []);
 
+  
   // console.log(curState.products[0]);
   console.log("bye");
 

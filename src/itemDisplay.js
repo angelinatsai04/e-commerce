@@ -20,7 +20,7 @@ function ItemDisplay({product, cart, setCart}) {
                 {product.title}
                 ${product.price}
             </p>
-            <BuyButton item={product.title} carQuantity={cart} setCartQuantity={setCart} />
+            <BuyButton item={product.title} cartQuantity={cart} setCartQuantity={setCart} />
         </div>
     );
 }

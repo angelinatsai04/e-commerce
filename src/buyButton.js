@@ -10,15 +10,11 @@ function BuyButton({item, cartQuantity, setCartQuantity}) {
     function handleRemove() {
       if (quantity > 0){ 
         setQuantity(quantity - 1);
-      } else {
-        setQuantity(0);
-      }
-      if (cartQuantity > 0){ 
         setCartQuantity(cartQuantity - 1);
       } else {
-        setCartQuantity(0);
+        setQuantity(0);
+        setCartQuantity(cartQuantity);
       }
-      
     }
   
     return (
@@ -31,7 +27,7 @@ function BuyButton({item, cartQuantity, setCartQuantity}) {
           -
         </button>
         <p>
-          Cart: {cartQuantity}
+          Items in Cart: {cartQuantity}
         </p>
       </>
     );
