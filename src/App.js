@@ -25,7 +25,7 @@ function Main() {
 
   return (
     <div>
-      <input search={search} onChange={(e) => setSearch(e.target.value)} />
+      <input type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)} />
       <div>
         {!curState 
         ? <p> loading </p>

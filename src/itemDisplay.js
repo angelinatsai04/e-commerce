@@ -18,6 +18,8 @@ function ItemDisplay({product, cart, setCart}) {
             </Carousel>
             <p>
                 {product.title}
+            </p>
+            <p>
                 ${product.price}
             </p>
             <BuyButton item={product.title} cartQuantity={cart} setCartQuantity={setCart} />
