@@ -1,8 +1,6 @@
-import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext, Carousel } from "src/components/ui/carousel"
 
 function ItemImageCarousel({image}) {
     return(
-        <CarouselItem>
         <div className="flex items-center justify-center p-1">
             <img
             alt="Image"
@@ -10,7 +8,6 @@ function ItemImageCarousel({image}) {
             src={image}
             />
         </div>
-        </CarouselItem>
     );
 }
 

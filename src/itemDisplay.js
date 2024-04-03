@@ -1,28 +1,21 @@
-import { React, useEffect, useState } from "react";
-import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext, Carousel } from "src/components/ui/carousel"
+import { React} from "react";
+import Carousel from 'react-material-ui-carousel'
 import BuyButton from "./buyButton.js";
 import ItemImageCarousel from "./itemImageCarousel.js";
-
-function ItemDisplay({product, cart, setCart}) {
+  
+function ItemDisplay({ product, setCartItems, cartQuantity, setCartQuantity }) {
     return (
         <div>
             <Carousel>
-            <CarouselContent>
             {!product 
             ? <p> loading </p>
             : product.images.map((image) => <ItemImageCarousel image={image} />)
             }
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
             </Carousel>
             <p>
-                {product.title}
+                {product.title} - ${product.price}
             </p>
-            <p>
-                ${product.price}
-            </p>
-            <BuyButton item={product.title} cartQuantity={cart} setCartQuantity={setCart} />
+            <BuyButton item={product} setCartItems={setCartItems} cartQuantity={cartQuantity} setCartQuantity={setCartQuantity}  />
         </div>
     );
 }
