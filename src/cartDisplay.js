@@ -1,7 +1,6 @@
 import {React} from "react";
 import Carousel from 'react-material-ui-carousel'
 import ItemImageCarousel from "./itemImageCarousel.js";
-import Box from '@mui/material/Box';
   
 function CartDisplay({ product, key }) {
     return (

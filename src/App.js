@@ -23,26 +23,12 @@ function Main() {
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
-  // const [products, setProducts] = useState([]);
 
   async function PopulateData() {
       const response = await fetch(`https://dummyjson.com/products/search?q=${search}`);
       const data = await response.json();
       setCurState(data);
   }
-
-  //  async function ViewCart() {
-  //   const response = await fetch('https://dummyjson.com/carts/user/2');
-  //   const cart = await response.json();
-  //   setCartItems(cart);
-  //   setCartToggle(true);
-  //   console.log("here");
-  //   console.log(cartItems.products[0].title);
-  //   // return(
-  //   //   <></>
-  //   //   // cartItems.cart.products.map((productInCart)=> <ItemDisplay product={productInCart} cartQuantity={cartQuantity} setCartQuantity={setCartQuantity} />) 
-  //   // );
-  // }
 
   const CartList = (
     <Box sx={{ width: 400 }}>
@@ -57,8 +43,6 @@ function Main() {
   useEffect(() => {
     PopulateData();
   }, [search]);
-  
-  // console.log(curState.products[0]);
 
   return (
     <div>
