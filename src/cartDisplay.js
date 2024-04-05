@@ -1,9 +1,9 @@
-import { React} from "react";
+import {React} from "react";
 import Carousel from 'react-material-ui-carousel'
-import BuyButton from "./buyButton.js";
 import ItemImageCarousel from "./itemImageCarousel.js";
+import Box from '@mui/material/Box';
   
-function ItemDisplay({ product, cartItems, setCartItems, cartQuantity, setCartQuantity }) {
+function CartDisplay({ product, key }) {
     return (
         <>
             <Carousel indicatorContainerProps={{ style: { marginLeft: "-35%" }}} 
@@ -17,12 +17,9 @@ function ItemDisplay({ product, cartItems, setCartItems, cartQuantity, setCartQu
                 <span style={{ fontWeight: 'bold' }}>
                 {product.title} - ${product.price}
                 </span>
-                <span style={{ marginLeft: "13%" }}>
-                <BuyButton item={product} cartItems={cartItems} setCartItems={setCartItems} cartQuantity={cartQuantity} setCartQuantity={setCartQuantity}/>
-                </span>
             </div>
         </>
     );
 }
 
-export default ItemDisplay;
+export default CartDisplay;
